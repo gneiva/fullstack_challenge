@@ -1,0 +1,20 @@
+.table-container {
+    padding: 16px;
+    margin: auto;
+    max-width: 1200px;
+  }
+  
+  @media (max-width: 600px) {
+    .mat-form-field {
+      width: 100%;
+    }
+  
+    .table-container {
+      padding: 8px;
+    }
+  
+    mat-table {
+      width: 100%;
+    }
+  }
+  

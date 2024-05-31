@@ -1,0 +1,21 @@
+.spacer {
+    flex: 1 1 auto;
+  }
+
+  .sidenav-container {
+    height: 100%;
+  }
+  
+  .sidenav {
+    width: 200px;
+  }
+  
+  .content {
+    padding: 16px;
+  }
+  
+  .active-link {
+    font-weight: bold;
+    color: #2196F3;
+  }
+  

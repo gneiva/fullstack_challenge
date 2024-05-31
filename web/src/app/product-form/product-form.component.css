@@ -1,0 +1,33 @@
+.table-container {
+  padding: 16px;
+  margin: auto;
+  max-width: 1000px;
+}
+
+@media (max-width: 600px) {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .table-container {
+    padding: 8px;
+  }
+
+  mat-table {
+    width: 100%;
+  }
+}
+
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 16px;
+  }
+  
+  @media (max-width: 600px) {
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+  
