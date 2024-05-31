@@ -38,8 +38,17 @@ public class Product {
 		this.quantity = quantity;
 		this.category = category;
 	}
-
-
+    
+    public Product(Long id, String name, String description, BigDecimal price, Integer quantity, Category category) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.price = price;
+		this.quantity = quantity;
+		this.category = category;
+	}
+    
 	public Long getId() {
 		return id;
 	}

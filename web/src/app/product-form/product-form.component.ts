@@ -5,6 +5,7 @@ import { CategoryService } from '../services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { Category } from '../models/category.model';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product-form',
@@ -47,7 +48,6 @@ export class ProductFormComponent implements OnInit {
 
   loadCategories() {
     this.categoryService.getCategories().subscribe(categories => {
-      console.log(categories);
       this.categories = categories;
     });
   }

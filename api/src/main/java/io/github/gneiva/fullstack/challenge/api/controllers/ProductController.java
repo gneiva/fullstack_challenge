@@ -3,6 +3,7 @@ package io.github.gneiva.fullstack.challenge.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.gneiva.fullstack.challenge.api.form.ProductForm;
 import io.github.gneiva.fullstack.challenge.api.models.Product;
 import io.github.gneiva.fullstack.challenge.api.services.impl.ProductServiceImp;
 
@@ -21,7 +24,15 @@ public class ProductController {
     @Autowired
     private ProductServiceImp productService;
 
+    
     @GetMapping
+    public Page<Product> findAll(@RequestParam(defaultValue = "0") int page,
+                                 @RequestParam(defaultValue = "10") int size,
+                                 @RequestParam(defaultValue = "id,asc") String[] sort) {
+        return productService.findAll(page, size, sort);
+    }
+     
+    @GetMapping("/all")
     public List<Product> findAll() {
         return productService.findAll();
     }
@@ -31,18 +42,16 @@ public class ProductController {
         return productService.findById(id);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping
-    public Product save(@RequestBody Product product) {
-        return productService.save(product);
+    public Product save(@RequestBody ProductForm productForm) {
+        return productService.save(productForm);
     }
     
     @PutMapping("/{id}")
-    public Product edit(@RequestBody Product product) {
-        return productService.save(product);
+    public Product edit(@RequestBody ProductForm productFrom) {
+    	return productService.save(productFrom);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Long id) {
         productService.deleteById(id);

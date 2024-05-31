@@ -17,7 +17,6 @@ export class AuthService {
     return this.http.post<{ token: string, type: string, expiresIn: number }>(`${this.apiUrl}`, { username, password })
       .pipe(
         map(response => {
-          console.log(response);
           this.isAuthenticated = true;
           localStorage.setItem('authToken', response.token);
           this.router.navigate(['/products']);
