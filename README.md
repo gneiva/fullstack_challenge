@@ -6,7 +6,7 @@ On the frontend, we use Angular with Material.
 
 ## User Stories
 ### 1 - Schema
-Create schema, which will allow storing different products and categories.<Br><br>
+Create schema, which will allow storing different products and categories.<Br>
 Keep in mind that getting full category path for the product might be a requirement in the future.
 <Br><br>
 
@@ -17,7 +17,7 @@ The table should contain the following columns: name, description, price, catego
 
 ### 3 - Functionality
 Add functionality for adding, editing, and deleting products.
-<Br><be>
+<Br><br>
 
 ## Run project 
 The docker-compose.yml includes the entire solution.
@@ -27,6 +27,6 @@ Start dockers with <i><b>docker-compose up --build -d</i></b>
 Open http://localhost/ in your browser.
 <Br><br>
 
-### Admin credentials:
+## Admin credentials:
 <b>username:</b> admin <br>
 <b>password:</b> admin
