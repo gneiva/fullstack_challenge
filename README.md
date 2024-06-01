@@ -27,6 +27,6 @@ Start dockers with <i><b>docker-compose up --build -d</i></b>
 Open http://localhost/ in your browser.
 <Br><br>
 
-## Admin credentials:
+## Admin credentials
 <b>username:</b> admin <br>
 <b>password:</b> admin
