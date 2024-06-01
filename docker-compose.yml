@@ -1,5 +1,4 @@
 version: '3.8'
-
 services:
   web:
     build:
@@ -10,9 +9,33 @@ services:
     depends_on:
       - api
 
+  postgres:
+    image: postgres:13
+    container_name: pdb
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=fullstack_challenge
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
   api:
     build:
       context: ./api
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    environment:
+      - DB_HOSTNAME=pdb
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=admin
+      - JWT_TOKEN=0eacaf64406708f5b6197b90fe800a2d
+      - JWT_EXPIRATION=86400
+      - JWT_REFRESH_EXPIRATION=86400
+      - PROFILE=prod
+      
+volumes:
+  postgres_data:
