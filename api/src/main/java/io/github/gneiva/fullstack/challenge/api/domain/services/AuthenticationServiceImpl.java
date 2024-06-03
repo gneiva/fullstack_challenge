@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.services.impl;
+package io.github.gneiva.fullstack.challenge.api.domain.services;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -19,14 +19,14 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.User;
+import io.github.gneiva.fullstack.challenge.api.adapter.respository.UserRepository;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.AuthenticationServicePort;
 import io.github.gneiva.fullstack.challenge.api.dtos.TokenResponseDto;
 import io.github.gneiva.fullstack.challenge.api.infra.exceptions.UnauthorizedException;
-import io.github.gneiva.fullstack.challenge.api.models.User;
-import io.github.gneiva.fullstack.challenge.api.respository.UserRepository;
-import io.github.gneiva.fullstack.challenge.api.services.AuthenticationService;
 
 @Service
-public class AuthenticationServiceImpl implements AuthenticationService {
+public class AuthenticationServiceImpl implements AuthenticationServicePort {
 
     @Value("${auth.jwt.token.secret}")
     private String secretKey;

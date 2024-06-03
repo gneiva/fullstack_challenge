@@ -1,11 +1,11 @@
-package io.github.gneiva.fullstack.challenge.api.respository;
+package io.github.gneiva.fullstack.challenge.api.adapter.respository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import io.github.gneiva.fullstack.challenge.api.models.Category;
-import io.github.gneiva.fullstack.challenge.api.models.Product;
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Category;
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 	

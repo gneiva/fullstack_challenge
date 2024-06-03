@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.controllers;
+package io.github.gneiva.fullstack.challenge.api.adapter.controllers;
 
 import java.util.List;
 
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.gneiva.fullstack.challenge.api.models.Category;
-import io.github.gneiva.fullstack.challenge.api.services.CategoryService;
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Category;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.CategoryServicePort;
 
 @RestController
 @RequestMapping("api/v1/categories")
 public class CategoryController {
 	
     @Autowired
-    private CategoryService categoryService;
+    private CategoryServicePort categoryService;
 
     @GetMapping
     public List<Category> findAll() {

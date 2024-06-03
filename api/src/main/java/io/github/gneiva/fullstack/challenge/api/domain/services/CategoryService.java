@@ -1,21 +1,22 @@
-package io.github.gneiva.fullstack.challenge.api.services.impl;
+package io.github.gneiva.fullstack.challenge.api.domain.services;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.github.gneiva.fullstack.challenge.api.models.Category;
-import io.github.gneiva.fullstack.challenge.api.models.Product;
-import io.github.gneiva.fullstack.challenge.api.respository.CategoryRepository;
-import io.github.gneiva.fullstack.challenge.api.services.CategoryService;
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Category;
+import io.github.gneiva.fullstack.challenge.api.adapter.respository.CategoryRepository;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.CategoryServicePort;
 
 @Service
-public class CategoryServiceImpl implements CategoryService {
+public class CategoryService implements CategoryServicePort {
 	
-    @Autowired
     private CategoryRepository categoriaRepository;
-
+    
+    public CategoryService(CategoryRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
+    
     @Override
     public List<Category> findAll() {
         return categoriaRepository.findAll();

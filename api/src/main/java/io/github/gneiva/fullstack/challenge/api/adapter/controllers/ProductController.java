@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.controllers;
+package io.github.gneiva.fullstack.challenge.api.adapter.controllers;
 
 import java.util.List;
 
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Product;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ProductService;
 import io.github.gneiva.fullstack.challenge.api.form.ProductForm;
-import io.github.gneiva.fullstack.challenge.api.models.Product;
-import io.github.gneiva.fullstack.challenge.api.services.impl.ProductServiceImp;
 
 @RestController
 @RequestMapping("api/v1/products")
 public class ProductController {
     @Autowired
-    private ProductServiceImp productService;
+    private ProductService productService;
 
     
     @GetMapping

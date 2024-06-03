@@ -1,9 +1,9 @@
-package io.github.gneiva.fullstack.challenge.api.config;
+package io.github.gneiva.fullstack.challenge.api.infra.config;
 
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.User;
+import io.github.gneiva.fullstack.challenge.api.adapter.respository.UserRepository;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.AuthenticationServicePort;
 import io.github.gneiva.fullstack.challenge.api.infra.exceptions.UnauthorizedException;
-import io.github.gneiva.fullstack.challenge.api.models.User;
-import io.github.gneiva.fullstack.challenge.api.respository.UserRepository;
-import io.github.gneiva.fullstack.challenge.api.services.AuthenticationService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ import java.io.IOException;
 public class SecurityFilter extends OncePerRequestFilter {
 
     @Autowired
-    private AuthenticationService autenticacaoService;
+    private AuthenticationServicePort autenticacaoService;
 
     @Autowired
     private UserRepository usuarioRepository;

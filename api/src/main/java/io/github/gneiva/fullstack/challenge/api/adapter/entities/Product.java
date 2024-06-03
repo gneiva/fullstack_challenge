@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.models;
+package io.github.gneiva.fullstack.challenge.api.adapter.entities;
 
 import java.math.BigDecimal;
 

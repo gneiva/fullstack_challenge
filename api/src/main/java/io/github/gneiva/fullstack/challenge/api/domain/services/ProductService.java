@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.services.impl;
+package io.github.gneiva.fullstack.challenge.api.domain.services;
 
 import java.util.Arrays;
 import java.util.List;
@@ -9,25 +9,26 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Category;
+import io.github.gneiva.fullstack.challenge.api.adapter.entities.Product;
+import io.github.gneiva.fullstack.challenge.api.adapter.respository.ProductRepository;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.CategoryServicePort;
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.ProductServicePort;
 import io.github.gneiva.fullstack.challenge.api.form.ProductForm;
 import io.github.gneiva.fullstack.challenge.api.infra.exceptions.BusinessException;
-import io.github.gneiva.fullstack.challenge.api.models.Category;
-import io.github.gneiva.fullstack.challenge.api.models.Product;
-import io.github.gneiva.fullstack.challenge.api.respository.CategoryRepository;
-import io.github.gneiva.fullstack.challenge.api.respository.ProductRepository;
-import io.github.gneiva.fullstack.challenge.api.services.CategoryService;
-import io.github.gneiva.fullstack.challenge.api.services.ProductService;
 
-@Service
-public class ProductServiceImp implements ProductService {
+
+public class ProductService implements ProductServicePort {
 	
-    @Autowired
-    private ProductRepository produtoRepository;
-    
-    @Autowired
-    private CategoryService categoryService;
+	private final ProductRepository produtoRepository;
+	
+	private CategoryServicePort categoryService;
+
+    public ProductService(ProductRepository produtoRepository, CategoryServicePort categoryService) {
+        this.produtoRepository = produtoRepository;
+        this.categoryService = categoryService;
+    }
 
     @Override
     public Page<Product> findAll(int page, int size, String[] sort) {

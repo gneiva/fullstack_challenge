@@ -1,4 +1,4 @@
-package io.github.gneiva.fullstack.challenge.api.controllers;
+package io.github.gneiva.fullstack.challenge.api.adapter.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.gneiva.fullstack.challenge.api.domain.services.ports.AuthenticationServicePort;
 import io.github.gneiva.fullstack.challenge.api.dtos.RequestRefreshDto;
 import io.github.gneiva.fullstack.challenge.api.dtos.TokenDTO;
 import io.github.gneiva.fullstack.challenge.api.dtos.TokenResponseDto;
 import io.github.gneiva.fullstack.challenge.api.form.LoginForm;
-import io.github.gneiva.fullstack.challenge.api.services.AuthenticationService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -29,7 +29,7 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @Autowired
-    private AuthenticationService autenticacaoService;
+    private AuthenticationServicePort autenticacaoService;
 
     @PostMapping
     public ResponseEntity<Object> auth(@RequestBody @Valid LoginForm form) {
