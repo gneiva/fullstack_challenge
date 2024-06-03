@@ -1,5 +1,6 @@
 package io.github.gneiva.fullstack.challenge.api.services.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,11 +37,14 @@ public class ProductServiceImp implements ProductService {
     }
     
     private List<Sort.Order> parseSort(String[] sort) {
-        return Arrays.stream(sort)
-                     .map(s -> s.split(","))
-                     .filter(s -> s.length == 2)
-                     .map(s -> new Sort.Order(Sort.Direction.fromString(s[1]), s[0]))
-                     .collect(Collectors.toList());
+    	
+    	List<Sort.Order> orderList = new ArrayList<Sort.Order>();
+    	
+    	if(sort != null &&  sort.length >= 2) {
+    		orderList.add(new Sort.Order(Sort.Direction.fromString(sort[1]), sort[0]));
+    	}
+    	
+    	return orderList;
     }
     
     @Override
